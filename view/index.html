@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileShare - SignIn</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Remix Icon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-gray-200 min-h-screen flex justify-center items-center">
+
+    <div class="bg-white p-8 w-11/12 sm:w-8/12 md:w-5/12 lg:w-4/12 rounded-xl space-y-5 shadow-sm animate__animated animate__fadeInDown">
+        
+        <!-- Logo & Title -->
+        <div class="flex gap-2 items-center justify-center">
+            <i class="ri-contrast-2-fill text-4xl text-violet-600"></i>
+            <h1 class="text-2xl font-semibold">ShareKit</h1>
+        </div>
+
+        <!-- SignIn Form -->
+        <form class="flex flex-col gap-4">
+            <!-- Email Input -->
+            <div class="relative flex items-center">
+                <i class="ri-mail-line absolute left-3 text-gray-400 text-lg"></i>
+                <input 
+                    type="email" 
+                    class="border border-gray-300 p-2.5 pl-10 rounded w-full outline-violet-500 text-sm" 
+                    placeholder="Enter Your E-mail" 
+                    required
+                >
+            </div>
+
+            <!-- Password Input with Eye Toggle -->
+            <div class="relative flex items-center">
+                <i class="ri-lock-line absolute left-3 text-gray-400 text-lg"></i>
+                <input 
+                    type="password" 
+                    id="signin-password"
+                    class="border border-gray-300 p-2.5 pl-10 pr-10 rounded w-full outline-violet-500 text-sm" 
+                    placeholder="Enter Your Password" 
+                    required
+                >
+                <button 
+                    type="button" 
+                    id="toggle-btn"
+                    class="absolute right-3 text-gray-400 hover:text-gray-600 cursor-pointer"
+                >
+                    <i class="ri-eye-line text-lg" id="eye-icon"></i>
+                </button>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="bg-violet-500 hover:bg-violet-600 text-white w-full p-3 font-medium rounded transition-colors cursor-pointer">
+                SignIn
+            </button>
+        </form>
+
+        <!-- Redirect to SignUp -->
+        <div class="flex gap-1 justify-center text-sm text-gray-600">
+            <span>Don't Have an Account?</span>
+            <a href="signup.html" class="text-blue-500 font-medium hover:underline cursor-pointer">SignUp</a>
+        </div>
+        
+    </div>
+
+    <!-- Password Toggle Script -->
+    <script>
+        const passwordInput = document.getElementById('signin-password');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const eyeIcon = document.getElementById('eye-icon');
+
+        toggleBtn.addEventListener('click', () => {
+            const isPassword = passwordInput.getAttribute('type') === 'password';
+            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+            eyeIcon.className = isPassword ? 'ri-eye-off-line text-lg' : 'ri-eye-line text-lg';
+        });
+    </script>
+</body>
+</html>
